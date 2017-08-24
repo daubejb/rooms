@@ -1,0 +1,20 @@
+{
+  "name": "Rooms",
+  "short_name": "Rooms",
+  "start_url": "index.html",
+  "display": "standalone",
+  "theme_color": "#cc0000",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "images/manifest/daubedesign-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/manifest/daubedesign-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

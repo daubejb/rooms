@@ -1,0 +1,11 @@
+{
+  "name": "rooms",
+  "version": "1.0.0",
+  "description": "A way to quickly find an available room",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeffrey B. Daube",
+  "license": "ISC"
+}

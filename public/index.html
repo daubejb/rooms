@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Rooms</title>
+    <meta name="description" content="A way to quickly grab a room for a meeting">
+    <link rel="icon" href="/images/daubedesign.ico">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#cc0000">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Rooms">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Rooms">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/daubedesign-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/daubedesign-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/daubedesign-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/daubedesign-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/daubedesign-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/daubedesign-144x144.png">
+    <meta name="msapplication-TileColor" content="#cc0000">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <style>
+      html, body {
+        min-height: 100vh;
+      }
+      body {
+        margin: 0;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        height: 100%;
+        min-height: 100vh;
+        background-color: whitesmoke;
+      }
+      /* styling for render while resources are loading */
+      .splash {
+        display: block;
+        text-align: center;
+        font-weight: 300;
+        font-size: 18px;
+        color: #292F36;
+        max-width: 400px;
+        margin: auto;
+        padding-top: 10%;
+      }
+      .header {
+        height: 350px;
+        overflow: hidden;
+      }
+      .footer {
+        font-size: 13px;
+      }
+      a:link, a:visited {
+        color: #474448 ;
+        /* TODO come up with a better Link / focus color */
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .maintitle {
+        font-size: 3.8em;
+        font-weight: 200;
+        color: #cc0000;
+      }
+      .loading {
+        animation: blink 1.5s linear infinite;
+        -o-animation: blink 1.5s linear infinite;
+        -moz-animation: blink 1.5s linear infinite;
+        -webkit-animation: blink 1.5s linear infinite;
+      }
+      @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+      @-webkit-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+      @-moz-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+      @-o-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+
+    </style>
+    <script src="./rooms-home.js"></script>
+    <script async defer src="./scripts/date.js"></script>
+    </head>
+    <body>
+      <rooms-home>
+        <slot>
+          <div class="splash">
+            <div class="header">
+              <div class="maintitle">Rooms</div>
+                <p role="main">A way to quickly grab a room for a meeting</p>
+                <br>
+                <p id="loading" class="loading">Rooms is Loading... ⏳</p>
+              </div>
+            <p class="footer">Created by <a href="https://twitter.com/jeffdaube">Jeffrey B. Daube</a>.
+              Find this code on <a href="https://github.com/daubejb/room">GitHub</a>.</p>
+          </div>
+        </slot>
+      </rooms-home>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB7oGjg2M33ehczw_44G4PoBFnuX9Rgw6g",
+        authDomain: "rapid-rooms.firebaseapp.com",
+        databaseURL: "https://rapid-rooms.firebaseio.com",
+        projectId: "rapid-rooms",
+        storageBucket: "",
+        messagingSenderId: "1063479136429"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script>
+      // Load webcomponentsjs polyfill if browser does not support native Web Components
+      (function() {
+        'use strict';
+        var onload = function() {
+          // For native Imports, manually fire WebComponentsReady so user code
+          // can use the same code path for native and polyfill'd imports.
+          if (!window.HTMLImports) {
+            document.dispatchEvent(
+              new CustomEvent('WebComponentsReady', {bubbles: true})
+            );
+          }
+        };
+        var webComponentsSupported = (
+          'registerElement' in document
+          && 'import' in document.createElement('link')
+          && 'content' in document.createElement('template')
+        );
+        if (!webComponentsSupported) {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = '/webcomponentsjs/webcomponents-lite.js';
+          script.onload = onload;
+          document.head.appendChild(script);
+        } else {
+          onload();
+        }
+      })();
+      // Load pre-caching Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          console.log('registering service worker...')
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+  </html>
