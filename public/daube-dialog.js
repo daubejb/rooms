@@ -5,7 +5,7 @@
       return `
 <style>
   #dialogmodal {
-    position: absolute;
+    position: fixed;
     border-radius: 3px;
     box-shadow:  0px 11px 15px -7px rgba(0, 0, 0, 0.2),
                   0px 24px 38px 3px rgba(0, 0, 0, 0.14),
@@ -13,8 +13,8 @@
     padding: 2rem;
     background-color: white;
     margin: auto;
-    width: 40rem;
-    height: 13rem;
+    width: 20rem;
+    height: 14rem;
     z-index: 2;
     top: 0;
     right: 0;
@@ -77,6 +77,7 @@
       primBtn.addEventListener('click', e => {
         console.log('primary button clicked');
         reserveTheRoom();
+        this.removeAttribute('display');
       });
       var secoBtn = this.querySelector(".secondary");
       secoBtn.addEventListener('click', e => {

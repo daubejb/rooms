@@ -20,15 +20,15 @@ importScripts('workbox-sw.prod.v2.0.0.js');
 const fileManifest = [
   {
     "url": "daube-card.js",
-    "revision": "31571326d85ecc346694592cd13e536d"
+    "revision": "2d427a2fb6ce13fe88c29c56f515fa46"
   },
   {
     "url": "daube-dialog.js",
-    "revision": "35bd2527965c82c2151275f2da84b103"
+    "revision": "cc51b1a4674a55f9824653108699eca2"
   },
   {
     "url": "daube-header.js",
-    "revision": "3682c09e2598dd3bd72b8c5762831dc7"
+    "revision": "829a8f44dfa8a2a1fa0bab08e15d3953"
   },
   {
     "url": "daube-table.js",
@@ -40,7 +40,7 @@ const fileManifest = [
   },
   {
     "url": "daube-user-menu.js",
-    "revision": "786ddf4f22893842842abb8795d0d1c5"
+    "revision": "ea80ac4ea5398a7a541e7da0ecf72814"
   },
   {
     "url": "images/daubedesign.ico",
@@ -88,7 +88,7 @@ const fileManifest = [
   },
   {
     "url": "rooms-home.js",
-    "revision": "cfe495ee1cf58fafd17852a38712293c"
+    "revision": "2fb830263aac65afec0ab2fa64c53b7c"
   },
   {
     "url": "scripts/date.js",
@@ -100,7 +100,7 @@ const fileManifest = [
   },
   {
     "url": "scripts/main.js",
-    "revision": "5d069aeb61d42e288307dd9c72981b63"
+    "revision": "187660856a2fc7351e6560d3c284c0d3"
   },
   {
     "url": "webcomponentjs/webcomponents-lite.js",

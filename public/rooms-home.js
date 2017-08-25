@@ -190,8 +190,10 @@ button.primary {
       var startTime = new Date(now.getTime());
       console.log('start time:', startTime);
       console.log('end time: ', endTime);
-      sessionStorage.setItem('startTime', startTime);
-      sessionStorage.setItem('endTime', endTime);
+      var formatedStartTime = new Date(startTime.getTime()).toISOString();
+      var formatedEndTime = new Date(endTime.getTime()).toISOString();
+      sessionStorage.setItem('startTime', formatedStartTime);
+      sessionStorage.setItem('endTime', formatedEndTime);
       var times = [startTime, endTime];
       return times
     }

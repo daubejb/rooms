@@ -25,7 +25,7 @@ header {
 }
 </style>
 <header>
-  <div class="maintitle">Header</div>
+  <div class="maintitle">Rapid Rooms</div>
   <slot></slot>
 </header>
 `

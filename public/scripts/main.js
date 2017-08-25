@@ -59,3 +59,33 @@ function getHomeView () {
   var homeView = document.getElementsByTagName('rooms-home')[0].shadowRoot.querySelector('#home');
   return homeView;
 }
+
+function reserveTheRoom() {
+var roomId = sessionStorage.getItem('roomId');
+var startTime = sessionStorage.getItem('startTime');
+var endTime = sessionStorage.getItem('endTime');
+var event = {
+  'summary': 'Rapid Rooms - Reservation',
+  'description': 'A quick meeting',
+  "start": {
+    "dateTime": startTime
+  },
+  "end": {
+    "dateTime": endTime
+  },
+  "attendees": [
+    {
+      "email": roomId
+    }
+  ]
+}
+console.log(event);
+var request = gapi.client.calendar.events.insert({
+  'calendarId': 'primary',
+  'resource': event
+});
+
+request.execute(function(event) {
+  console.log('event: ', event.htmlLink);
+});
+}

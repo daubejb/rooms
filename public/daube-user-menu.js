@@ -33,7 +33,7 @@
     right: 2rem;
     background-color: white;
     min-width: 10rem;
-    width: 20rem;
+    width: 22rem;
     box-shadow: 0 2px 10px rgba(0,0,0,.2);
     padding: 0rem;
     z-index: 2;
@@ -42,10 +42,10 @@
   .btn {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    border-color: #237d32;
+    border-color: #cc0000;
     border-radius: 2px;
     height: 2.25rem;
-    background-color: #237d32;
+    background-color: #cc0000;
     color: white;
     cursor: pointer;
     right: 1.25rem;
@@ -62,7 +62,7 @@
     font-weight: 600;
   }
   #emailaddress {
-    color: #cc0000;
+    color: #474448;
     display: block;
     text-align: left;
   }
