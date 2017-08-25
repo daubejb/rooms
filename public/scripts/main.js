@@ -34,8 +34,8 @@ function updateSigninStatus(isSignedIn) {
     console.log('signed in');
     
   } else {
-    signInView.style.display = 'none';
-    homeView.style.display = 'block';
+    signInView.style.display = 'block';
+    homeView.style.display = 'none';
     console.log('signed out');
   }
 }

@@ -78,6 +78,7 @@ button.primary {
   <daube-header id="daubeheader">
     <daube-user-icon></daube-user-icon>
   </daube-header>
+  <daube-user-menu></daube-user-menu>
 </div>
 `
     }
@@ -98,8 +99,19 @@ button.primary {
         console.log('login with google button clicked');
         handleAuthClick(e);
       });
+      var body = document.querySelector('body');
+      body.addEventListener('user-icon-clicked', e => {
+        this.toggleUserMenu();
+      });
     }
-
+    toggleUserMenu() {
+      var daubeUserMenu = this.shadowRoot.querySelector('daube-user-menu');
+      if (daubeUserMenu.display) {
+        daubeUserMenu.removeAttribute('display');
+      } else {
+        daubeUserMenu.setAttribute('display', '');
+      }
+    }
   } // Class RoomsHome
   customElements.define("rooms-home", RoomsHome);
 })();
