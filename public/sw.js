@@ -80,7 +80,7 @@ const fileManifest = [
   },
   {
     "url": "index.html",
-    "revision": "e87fb4c08ad66e9d01ae0a2f793da51e"
+    "revision": "82fbacb5f24e5d08b23051d863bf58a3"
   },
   {
     "url": "manifest.json",
@@ -100,7 +100,7 @@ const fileManifest = [
   },
   {
     "url": "scripts/main.js",
-    "revision": "187660856a2fc7351e6560d3c284c0d3"
+    "revision": "e2d1513cdcf8ff524168a17894a63774"
   },
   {
     "url": "webcomponentjs/webcomponents-lite.js",

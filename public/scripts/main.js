@@ -1,4 +1,4 @@
-var CLIENT_ID = '894633030567-dsnukjrj8jaeo7b4mqk94b4b88h3bian.apps.googleusercontent.com';
+var CLIENT_ID = '894633030567-cn8q0jelvn3vbrjo370q584m1d68d574.apps.googleusercontent.com';
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 var SCOPES = "https://www.googleapis.com/auth/calendar";
 
@@ -42,12 +42,12 @@ function updateSigninStatus(isSignedIn) {
 
 /*Sign in the user upon button click.*/
 function handleAuthClick(event) {
-  gapi.auth2.getAuthInstance().signIn();
+  gapi.auth2.getAuthInstance().signIn({prompt: 'consent'});
 }
 
 /*Sign out the user upon button click.*/
 function handleSignoutClick(event) {
-  gapi.auth2.getAuthInstance().signOut();
+  gapi.auth2.getAuthInstance().disconnect();
 }
 
 function getSignInView () {
