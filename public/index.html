@@ -89,8 +89,15 @@
       @-o-keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
 
     </style>
-    <script src="./rooms-home.js"></script>
+    <script async src="./rooms-home.js"></script>
+    <script async src="./scripts/main.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js"
+    onload="this.onload=function(){};handleClientLoad()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
     <script async defer src="./scripts/date.js"></script>
+    <script async defer src="./daube-header.js"></script>
+    <script async defer src="./daube-user-icon.js"></script>
     </head>
     <body>
       <rooms-home>

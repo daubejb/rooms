@@ -3,7 +3,6 @@
   class RoomsHome extends HTMLElement {
     static get template() {
       return `
-<script src="main.js"></script>
 <style>
 :host {
   display: block;
@@ -75,6 +74,11 @@ button.primary {
   <p class="footer">Created by <a href="https://twitter.com/jeffdaube">Jeffrey B. Daube</a>.
   Find this on <a href="https://github.com/daubejb/attic">GitHub</a>.</p>
 </div>
+<div id="home" style="display:none;">
+  <daube-header id="daubeheader">
+    <daube-user-icon></daube-user-icon>
+  </daube-header>
+</div>
 `
     }
     static get observedAttributes() {}
@@ -92,7 +96,7 @@ button.primary {
       var googlelogin = this.shadowRoot.querySelector("#googlelogin");
       googlelogin.addEventListener("click", e => {
         console.log('login with google button clicked');
-        this.googleLogin();
+        handleAuthClick(e);
       });
     }
 

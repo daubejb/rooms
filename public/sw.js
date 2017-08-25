@@ -19,6 +19,14 @@ importScripts('workbox-sw.prod.v2.0.0.js');
  */
 const fileManifest = [
   {
+    "url": "daube-header.js",
+    "revision": "3682c09e2598dd3bd72b8c5762831dc7"
+  },
+  {
+    "url": "daube-user-icon.js",
+    "revision": "42f4ca964069c168e2f83ad89070d339"
+  },
+  {
     "url": "images/daubedesign.ico",
     "revision": "24512db0081f46a91b8fdce36c155669"
   },
@@ -56,7 +64,7 @@ const fileManifest = [
   },
   {
     "url": "index.html",
-    "revision": "edd8931c516bcebdd33c9a4ecbc56814"
+    "revision": "9313d38fdbe4088f0a23ae9f47a2e07e"
   },
   {
     "url": "manifest.json",
@@ -64,7 +72,7 @@ const fileManifest = [
   },
   {
     "url": "rooms-home.js",
-    "revision": "5633060198e3ac8701ab90935112ee5e"
+    "revision": "39996dcfe03f1ca1c6eed1ffbff16271"
   },
   {
     "url": "scripts/date.js",
@@ -76,7 +84,7 @@ const fileManifest = [
   },
   {
     "url": "scripts/main.js",
-    "revision": "b26c06f8987954da625f681912963417"
+    "revision": "05cc6180493e87f01403e6dff7d10f86"
   },
   {
     "url": "webcomponentjs/webcomponents-lite.js",
