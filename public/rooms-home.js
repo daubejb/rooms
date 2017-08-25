@@ -93,6 +93,9 @@ button.primary {
       <br>
     </daube-table>
   </daube-card>
+  <daube-snack>
+    <div slot="message" class="message"><p id="message">Meeting room request sent</p></div>
+  </daube-snack>
 </div>
 `
     }

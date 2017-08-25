@@ -32,7 +32,7 @@ function updateSigninStatus(isSignedIn) {
     signInView.style.display = 'none';
     homeView.style.display = 'block';
     console.log('signed in');
-    
+
   } else {
     signInView.style.display = 'block';
     homeView.style.display = 'none';
@@ -50,16 +50,20 @@ function handleSignoutClick(event) {
   gapi.auth2.getAuthInstance().disconnect();
 }
 
-function getSignInView () {
+function getSignInView() {
   var signInView = document.getElementsByTagName('rooms-home')[0].shadowRoot.querySelector('#signin');
   return signInView;
 }
 
-function getHomeView () {
+function getHomeView() {
   var homeView = document.getElementsByTagName('rooms-home')[0].shadowRoot.querySelector('#home');
   return homeView;
 }
 
+function getSnackView() {
+  var snackView = document.getElementsByTagName('rooms-home')[0].shadowRoot.querySelector('daube-snack');
+  return snackView;
+}
 function reserveTheRoom() {
 var roomId = sessionStorage.getItem('roomId');
 var startTime = sessionStorage.getItem('startTime');
@@ -86,6 +90,16 @@ var request = gapi.client.calendar.events.insert({
 });
 
 request.execute(function(event) {
-  console.log('event: ', event.htmlLink);
+  var snack = getSnackView();
+  var meetingConfirmation = event.status;
+  if (meetingConfirmation === 'confirmed') {
+    snack.setAttribute('display', '');
+    hideSnack(snack);
+  }
+  console.log(event);
 });
+}
+
+function hideSnack(v) {
+  v.setAttribute('display', '');
 }
