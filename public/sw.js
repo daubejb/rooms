@@ -19,8 +19,20 @@ importScripts('workbox-sw.prod.v2.0.0.js');
  */
 const fileManifest = [
   {
+    "url": "daube-card.js",
+    "revision": "31571326d85ecc346694592cd13e536d"
+  },
+  {
+    "url": "daube-dialog.js",
+    "revision": "35bd2527965c82c2151275f2da84b103"
+  },
+  {
     "url": "daube-header.js",
     "revision": "3682c09e2598dd3bd72b8c5762831dc7"
+  },
+  {
+    "url": "daube-table.js",
+    "revision": "30d70827bb4b46ef2ce854da1918166f"
   },
   {
     "url": "daube-user-icon.js",
@@ -28,7 +40,7 @@ const fileManifest = [
   },
   {
     "url": "daube-user-menu.js",
-    "revision": "63e3c064b66c3c343d3affa4a71ce436"
+    "revision": "786ddf4f22893842842abb8795d0d1c5"
   },
   {
     "url": "images/daubedesign.ico",
@@ -68,7 +80,7 @@ const fileManifest = [
   },
   {
     "url": "index.html",
-    "revision": "caf45e744ae1d3d178e0779eab8011ef"
+    "revision": "e87fb4c08ad66e9d01ae0a2f793da51e"
   },
   {
     "url": "manifest.json",
@@ -76,7 +88,7 @@ const fileManifest = [
   },
   {
     "url": "rooms-home.js",
-    "revision": "701e20a5b1f8d8101e0d697ff6e24adf"
+    "revision": "cfe495ee1cf58fafd17852a38712293c"
   },
   {
     "url": "scripts/date.js",

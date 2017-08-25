@@ -79,6 +79,20 @@ button.primary {
     <daube-user-icon></daube-user-icon>
   </daube-header>
   <daube-user-menu></daube-user-menu>
+  <daube-dialog>
+    <h3 slot="question">Reserve this room?</h3>d
+    <p slot="details" id="details"></p>
+    <p slot="message">Please tap reserve to confirm.</p>
+    <button class="btn secondary" slot="negative">Cancel</button>
+    <button class="btn primary" slot="positive">Reserve</button>
+  </daube-dialog>
+  <daube-card>
+    <daube-table>
+      <h2>Available rooms</h2>
+      <p>To reserve a room, tap a checkbox</p>
+      <br>
+    </daube-table>
+  </daube-card>
 </div>
 `
     }
@@ -103,6 +117,91 @@ button.primary {
       body.addEventListener('user-icon-clicked', e => {
         this.toggleUserMenu();
       });
+      body.addEventListener('book-room-clicked', e => {
+        var rawTimeSel = e.detail.path[0];
+        console.log(rawTimeSel);
+        var times = this.getDesiredTime(rawTimeSel);
+        var sTime = new Date(times[0]).toString("hh:mm tt");
+        var eTime = new Date(times[1]).toString("hh:mm tt");
+        console.log('eTime: ', eTime);
+        var resourceId = e.detail.path[1].id;
+        sessionStorage.setItem('roomId', resourceId);
+
+        console.log('raw id test: ', resourceId);
+        var resourceName = e.detail.path[1].children[0].innerHTML;
+        var details = this.shadowRoot.querySelector('#details');
+        details.innerHTML = ('Name: ' + resourceName + '<br>' + 'Start: ' + sTime + '<br>' + 'End: ' + eTime);
+
+        console.log('details: ', details);
+        console.log('resource Name: ', resourceName);
+        this.toggleDialog();
+      })
+    }
+    getDesiredTime(rawTimeSel) {
+      var now = new Date();
+      var hour = now.getHours();
+      var minutes = now.getMinutes();
+      now.setSeconds(0);
+      var stringTimeSel = rawTimeSel.className;
+      console.log('string time sel: ', stringTimeSel);
+      if (stringTimeSel.includes("nextthirty")) {
+        if (minutes < 5) {
+          now.setMinutes(0);
+        } else if (minutes < 35) {
+          now.setMinutes(30);
+        } else if (minutes >= 35) {
+          now.setMinutes(0);
+          hour = hour + 1;
+          now.setHours(hour);
+        }
+        var endTime = new Date(now.getTime());
+        endTime.addMinutes(30);
+        console.log('next thirty: ', now);
+      } else if (stringTimeSel.includes("thishour")) {
+        if (minutes < 15) {
+          now.setMinutes(0);
+        } else if (minutes < 45) {
+          now.setMinutes(30);
+        } else if (minutes >= 45) {
+          now.setMinutes(0);
+          hour = hour + 1;
+          now.setHours(hour);
+        }
+        var endTime = new Date(now.getTime());
+        endTime.addHours(1);
+        console.log('thishour: ', now);
+      } else if (stringTimeSel.includes("nexthour")) {
+        if (minutes < 5) {
+          now.setMinutes(0);
+        } else if (minutes < 35) {
+          now.setMinutes(30);
+        } else if (minutes >= 35) {
+          now.setMinutes(0);
+          hour = hour + 1;
+          now.setHours(hour);
+        }
+        var endTime = new Date(now.getTime());
+        endTime.addHours(1);
+        console.log('nexthour: ', now);
+      } else {
+        console.warn("Something went wrong, no desired time selected");
+        return
+      }
+      var startTime = new Date(now.getTime());
+      console.log('start time:', startTime);
+      console.log('end time: ', endTime);
+      sessionStorage.setItem('startTime', startTime);
+      sessionStorage.setItem('endTime', endTime);
+      var times = [startTime, endTime];
+      return times
+    }
+    toggleDialog() {
+      var daubeDialog = this.shadowRoot.querySelector('daube-dialog');
+      if (daubeDialog.display) {
+        daubeDialog.removeAttribute('display');
+      } else {
+        daubeDialog.setAttribute('display', '');
+      }
     }
     toggleUserMenu() {
       var daubeUserMenu = this.shadowRoot.querySelector('daube-user-menu');
